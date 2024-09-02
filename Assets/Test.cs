@@ -4,16 +4,27 @@ using Unity.Properties;
 
 public sealed class Test : MonoBehaviour
 {
-    [CreateProperty] public int Index { get; set; }
+    int _index = 0;
+
+    [CreateProperty] public int Index
+    {
+        get { Debug.Log("GET"); return _index; }
+        set { Debug.Log("SET"); _index = value; }
+    }
+
+    void Start()
+    {
+        var root = GetComponent<UIDocument>().rootVisualElement;
+        var radio = root.Q<RadioButtonGroup>("radio-button-group");
+        radio.dataSource = this;
+    }
 
     void Update()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
-
-        var idx = root.Q<RadioButtonGroup>("radio-button-group").value;
-
-        root.Q<Label>("label1").text = $"Value from binding = {Index}";
-        root.Q<Label>("label2").text = $"RadioButtonGroup.value = {idx}";
+        var radio = root.Q<RadioButtonGroup>("radio-button-group");
+        root.Q<Label>("label1").text = $"Value from binding = {_index}";
+        root.Q<Label>("label2").text = $"RadioButtonGroup.value = {radio.value}";
     }
 }
 

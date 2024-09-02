@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:RadioButtonGroup label="Radio Button Group" choices="Option 1,Option 2,Option 3" name="radio-button-group" data-source-type="Test, Assembly-CSharp">
         <Bindings>
-            <engine:DataBinding property="value" update-trigger="EveryUpdate" data-source-path="Index" binding-mode="TwoWay" />
+            <engine:DataBinding property="value" data-source-path="Index" binding-mode="TwoWay" update-trigger="EveryUpdate" />
         </Bindings>
     </engine:RadioButtonGroup>
     <engine:Label text="Label1" name="label1" />
